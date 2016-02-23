@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="3105dd02-8b2c-45a7-a5a5-5e718ea3bd8c" ChangeDateTime="02/23/2016 16:25:55">
+    <Property Name="ElementName" Value="[dbo].[FK_IAInvoice_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[IAInvoice]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_IAUserAccount_IAInvoice]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="bad9ee00-a05b-40e0-9101-8d5dbbb1d8c6" ChangeDateTime="02/23/2016 16:26:25">
+    <Property Name="ElementName" Value="[dbo].[IAInvoice].[AccountId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[IAInvoice]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserAccountId" />
+  </Operation>
+</Operations>
