@@ -1,0 +1,23 @@
+﻿@model ISFInvoiceApplication.Web.Models.RegistrationViewModel
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Register for the ISF Invoice Application</h2>
+
+<form method="POST" action="/home/register">
+    @Html.AntiForgeryToken()
+    <label>Username: </label><input type="text" name="Username" />
+    <br /><br />
+    <label>Password: </label><input type="password" name="Password" />
+    <br /><br />
+    <label>Email: </label><input type="text" name="Email" />
+    <br /><br />
+    <input type="submit" value="Register" />
+</form>
+<br />
+<a href="/home">Go back to the home page</a>
+
+

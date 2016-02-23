@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISFInvoiceApplication.Core", "ISFInvoiceApplication.Core\ISFInvoiceApplication.Core.csproj", "{1769F476-C3D1-4A96-A209-6B3E48E6DF53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISFInvoiceApplication.Infrastructure", "ISFInvoiceApplication.Infrastructure\ISFInvoiceApplication.Infrastructure.csproj", "{9BAFF737-751B-416F-98DF-983C26A08165}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISFInvoiceApplication.Web", "ISFInvoiceApplication.Web\ISFInvoiceApplication.Web.csproj", "{FE428C83-DFEA-453D-995D-E7605036CB94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISFInvoiceApplication.Tests", "ISFInvoiceApplication.Tests\ISFInvoiceApplication.Tests.csproj", "{391E5660-B10D-4D91-8D91-8410F40CEBEE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{4CB7F9F4-EBCD-4EB8-BAAA-2A8F93032822}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\packages.config = .nuget\packages.config
+	EndProjectSection
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "InvoiceApplication.Data", "InvoiceApplication.Data\InvoiceApplication.Data.sqlproj", "{8776FA75-A7AC-4334-81B4-AF2134291238}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1769F476-C3D1-4A96-A209-6B3E48E6DF53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1769F476-C3D1-4A96-A209-6B3E48E6DF53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1769F476-C3D1-4A96-A209-6B3E48E6DF53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1769F476-C3D1-4A96-A209-6B3E48E6DF53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BAFF737-751B-416F-98DF-983C26A08165}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BAFF737-751B-416F-98DF-983C26A08165}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BAFF737-751B-416F-98DF-983C26A08165}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BAFF737-751B-416F-98DF-983C26A08165}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE428C83-DFEA-453D-995D-E7605036CB94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE428C83-DFEA-453D-995D-E7605036CB94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE428C83-DFEA-453D-995D-E7605036CB94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE428C83-DFEA-453D-995D-E7605036CB94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{391E5660-B10D-4D91-8D91-8410F40CEBEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{391E5660-B10D-4D91-8D91-8410F40CEBEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{391E5660-B10D-4D91-8D91-8410F40CEBEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{391E5660-B10D-4D91-8D91-8410F40CEBEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8776FA75-A7AC-4334-81B4-AF2134291238}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8776FA75-A7AC-4334-81B4-AF2134291238}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8776FA75-A7AC-4334-81B4-AF2134291238}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{8776FA75-A7AC-4334-81B4-AF2134291238}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8776FA75-A7AC-4334-81B4-AF2134291238}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8776FA75-A7AC-4334-81B4-AF2134291238}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
