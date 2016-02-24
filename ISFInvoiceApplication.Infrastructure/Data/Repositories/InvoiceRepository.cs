@@ -37,11 +37,16 @@ namespace ISFInvoiceApplication.Infrastructure.Data.Repositories
 
         public IEnumerable<Invoice> GetInvoicesByUserAccount(int userAccountId)
         {
-            return (from i in _invoiceApplicationEntites.IAInvoices
-                    where i.UserAccountId == userAccountId
-                    select new Invoice(i.Id, i.UserAccountId, 
-                               new OrderDetails(i.ProductName, i.Quantity, i.Price),
-                               i.OrderTime)).AsEnumerable();
+            var iaInvoices =  (from i in _invoiceApplicationEntites.IAInvoices
+                               where i.UserAccountId == userAccountId
+                               select i).AsEnumerable();
+
+            foreach (var iaInvoice in iaInvoices)
+            {
+                yield return new Invoice(iaInvoice.Id, iaInvoice.UserAccountId,
+                                         new OrderDetails(iaInvoice.ProductName, iaInvoice.Quantity, iaInvoice.Price),
+                                         iaInvoice.OrderTime);
+            }
         }
 
         public void SaveInvoice(Invoice invoice, int userAccountId)
@@ -54,12 +59,13 @@ namespace ISFInvoiceApplication.Infrastructure.Data.Repositories
                     ProductName = invoice.OrderDetails.ProductName,
                     Quantity = invoice.OrderDetails.Quantity,
                     Price = invoice.OrderDetails.Price,
-                    OrderTime = invoice.OrderTime
+                    OrderTime = DateTime.Now,
+                    Updated = DateTime.Now
                 });
             }
 
             var iaInvoice = _invoiceApplicationEntites.IAInvoices
-                                                      .FirstOrDefault(u => u.Id == userAccountId);
+                                                      .FirstOrDefault(u => u.Id == invoice.Id);
 
             if (invoice.State == TrackingState.Modified && iaInvoice != null)
             {

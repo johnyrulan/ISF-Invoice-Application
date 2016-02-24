@@ -7,16 +7,23 @@
 
 <h2>Register for the ISF Invoice Application</h2>
 
-<form method="POST" action="/home/register">
+@using (Html.BeginForm())
+{
     @Html.AntiForgeryToken()
-    <label>Username: </label><input type="text" name="Username" />
+    <label>Username: </label>@Html.TextBoxFor(model => model.Username, new { Class = "form-control", Required = "True" })
+
+
     <br /><br />
-    <label>Password: </label><input type="password" name="Password" />
+    <label>Password: </label>@Html.TextBoxFor(model => model.Password, new { Class = "form-control", Required = "True", Type = "password" })
+
     <br /><br />
-    <label>Email: </label><input type="text" name="Email" />
+    <label>Email: </label>@Html.TextBoxFor(model => model.Email, new { Class = "form-control", Required = "True" })
+
     <br /><br />
     <input type="submit" value="Register" />
-</form>
+}
+    
+
 <br />
 <a href="/home">Go back to the home page</a>
 

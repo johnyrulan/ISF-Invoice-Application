@@ -1,0 +1,17 @@
+﻿@{
+    ViewBag.Title = "UpdateAccount";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Update Account</h2>
+
+<form method="POST" action="/home/updateaccount">
+    @Html.AntiForgeryToken()
+    <label>Warning Limit (as integer): </label><input type="text" name="warningLimit" />
+    <br /><br />
+    <label>Error Limit (as integer): </label><input type="text" name="errorLimit" />
+    <br /><br />
+    <input type="submit" value="Submit" />
+</form>
+<br />
+<a href="/invoice/getinvoices">Go to Invoices</a>

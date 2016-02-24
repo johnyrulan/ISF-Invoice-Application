@@ -230,6 +230,10 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Invoice\GetInvoices.cshtml" />
+    <Content Include="Views\Invoice\CreateInvoice.cshtml" />
+    <Content Include="Views\Home\UpdateAccount.cshtml" />
+    <Content Include="Views\Invoice\UpdateInvoice.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

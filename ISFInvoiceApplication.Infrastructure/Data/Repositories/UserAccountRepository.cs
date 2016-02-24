@@ -19,10 +19,10 @@ namespace ISFInvoiceApplication.Infrastructure.Data.Repositories
             _invoiceRepository = new InvoiceRepository(invoiceApplicationEntities);
         }
 
-        public UserAccount GetUserAccount(string username, string password, bool getInvoices)
+        public UserAccount GetUserAccount(string username, bool getInvoices)
         {
             var iaUserAccount =_invoiceApplicationEntites.IAUserAccounts
-                                                         .FirstOrDefault(u => u.Username == username && u.Password == password);
+                                                         .FirstOrDefault(u => u.Username == username);
 
             if (iaUserAccount != null)
             {
@@ -76,7 +76,7 @@ namespace ISFInvoiceApplication.Infrastructure.Data.Repositories
                 iaUserAccount.WarningLimit = userAccount.InvoiceLimit.WarningLimit;
                 iaUserAccount.ErrorLimit = userAccount.InvoiceLimit.ErrorLimit;
                 iaUserAccount.InvoiceTotal = userAccount.InvoiceTotal;
-
+                iaUserAccount.Updated = DateTime.Now;
                 _invoiceApplicationEntites.Entry(iaUserAccount).State = EntityState.Modified;                                              
             }
 
@@ -90,7 +90,13 @@ namespace ISFInvoiceApplication.Infrastructure.Data.Repositories
                _invoiceRepository.SaveInvoice(invoice, userAccount.Id);
             }
 
-            _invoiceApplicationEntites.SaveChanges();
+            SaveUserAccount(userAccount);
+        }
+
+        public bool RegisteredUser(string username, string password)
+        {
+            return _invoiceApplicationEntites.IAUserAccounts
+                                             .FirstOrDefault(i => i.Username == username && i.Password == password) != null;
         }
     }
 }

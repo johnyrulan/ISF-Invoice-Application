@@ -45,7 +45,7 @@ namespace ISFInvoiceApplication.Core.Entities
             Email = email;
             InvoiceTotal = invoiceTotal;
             InvoiceLimit = invoiceLimit;
-            Invoices = (List<Invoice>)invoices;
+            Invoices = invoices.ToList();
         }
 
         public Tuple<int, string, bool> AddInvoice(Invoice invoice)
@@ -62,6 +62,8 @@ namespace ISFInvoiceApplication.Core.Entities
 
             invoice.State = TrackingState.Added;
             Invoices.Add(invoice);
+            this.InvoiceTotal += invoice.GetOrderAmount();
+            this.State = TrackingState.Modified;
             return new Tuple<int, string, bool>(invoice.Id, message, true);
         }
 
@@ -71,23 +73,39 @@ namespace ISFInvoiceApplication.Core.Entities
             if (invoiceToDelete != null)
             {
                 invoiceToDelete.State = TrackingState.Deleted;
+                this.InvoiceTotal -= invoiceToDelete.GetOrderAmount();
+                this.State = TrackingState.Modified;
                 return true;
             }
 
             return false;
         }
 
-        public bool UpdateInvoice(Invoice invoice)
+        public Tuple<int, string, bool> UpdateInvoice(Invoice invoice)
         {
             var invoiceToUpdate = Invoices.FirstOrDefault(i => i.Id == invoice.Id);
             if (invoiceToUpdate != null)
             {
+                int addedTotal = InvoiceTotal + invoice.GetOrderAmount();
+                if (addedTotal > InvoiceLimit.ErrorLimit)
+                {
+                    return new Tuple<int, string, bool>(invoice.Id, "The error limit has crossed. Invoice not updated.", false);
+                }
+
+                string message = (addedTotal > InvoiceLimit.WarningLimit)
+                ? "The warning limit has crossed. Be careful when adding more invoices."
+                : "Invoice update successful.";
+
+                this.InvoiceTotal -= invoiceToUpdate.GetOrderAmount();
+                this.InvoiceTotal += invoice.GetOrderAmount();
+                this.State = TrackingState.Modified;
+
                 invoiceToUpdate.OrderDetails = invoice.OrderDetails;
                 invoiceToUpdate.State = TrackingState.Modified;
-                return true;
+                return new Tuple<int, string, bool>(invoiceToUpdate.Id, message, true);
             }
 
-            return false;
+            return new Tuple<int, string, bool>(invoice.Id, "Invoice not found.", false);
         }
     }
 }

@@ -8,7 +8,7 @@ namespace ISFInvoiceApplication.Infrastructure.Data.Interfaces
 {
     interface IUserAccountRepository
     {
-        UserAccount GetUserAccount(string username, string password, bool getInvoices);
+        UserAccount GetUserAccount(string username, bool getInvoices);
         void SaveUserAccount(UserAccount userAccount);
     }
 }

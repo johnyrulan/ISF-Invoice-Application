@@ -1,0 +1,74 @@
+﻿
+@model IEnumerable<ISFInvoiceApplication.Core.Entities.Invoice>
+
+@{
+    ViewBag.Title = "GetInvoices";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Get Invoices</h2>
+<p style="color:green">
+    Username: @ViewBag.Username
+    <br/>
+    Email: @ViewBag.Email
+</p>
+
+<p>
+    Current Invoice Total: @ViewBag.SumTotal
+    <br/>
+    Warning Limit: @ViewBag.WarningLimit
+    <br/>
+    Error Limit: @ViewBag.ErrorLimit
+</p>
+
+<br />
+<a href="/home/updateaccount">Update Error/Warning Limit</a>
+<br />
+
+<p>
+    @Html.ActionLink("Create New", "CreateInvoice")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderDetails.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderDetails.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderDetails.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderTime)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderDetails.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderDetails.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderDetails.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderTime)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "UpdateInvoice", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "DeleteInvoice", new { id=item.Id })
+        </td>
+    </tr>
+}
+</table>

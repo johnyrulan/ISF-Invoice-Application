@@ -1,0 +1,36 @@
+﻿@model ISFInvoiceApplication.Core.Entities.Invoice
+
+@{
+    ViewBag.Title = "UpdateInvoice";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Update Invoice</h2>
+
+<p style="color:orange">
+    @ViewBag.Message
+</p>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Invoice</legend>
+
+        <input type="hidden" value="@Model.Id"/>
+
+        <label>Name: </label><input type="text" value="@Model.OrderDetails.ProductName" name="name"/>
+        <br/>
+        <label>Quantity (as integer): </label><input type="text" value="@Model.OrderDetails.Quantity" name="quantity" />
+        <br/>
+        <label>Price (as integer): </label><input type="text" value="@Model.OrderDetails.Price" name="price" />
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<br />
+<a href="/invoice/getinvoices">See all invoices</a>
+<br />
